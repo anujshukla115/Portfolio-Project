@@ -64,15 +64,39 @@
     <section id="skills" class="section alternate">
         <div class="container">
             <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>Frontend: HTML, CSS, JavaScript, Bootstrap</li>
-                <li>Programming: C++, Python</li>
-                <li>DSA (C++ Problem Solving)</li>
-                <li>Version Control: Git, GitHub</li>
-                <li>Deployment: Netlify, Vercel</li>
-                <li>Tools: VS Code, Chrome DevTools</li>
-            </ul>
-        </div>
+            
+<!-- Skill cards -->
+<div class="skills-gallery">
+    <div class="skill-card frontend">
+        <h3>Frontend:</h3>
+        <p>HTML,CSS,Bootstrap,JavaScript</p>
+    </div>
+
+    <div class="skill-card frontend">
+        <h3>Programming:</h3>
+        <p>C,Python,C++</p>
+    </div>
+
+    <div class="skill-card frontend">
+        <h3>DSA:</h3>
+        <p>(C++ Problem Solving)</p>
+    </div>
+
+    <div class="skill-card frontend">
+        <h3>Version Control:</h3>
+        <p>Git,GitHub</p>
+    </div>
+
+    <div class="skill-card programming">
+        <h3>Deployment:</h3>
+        <p>Netlify,Vercel</p>
+    </div>
+
+    <div class="skill-card programming">
+        <h3>Tools:</h3>
+        <p>VS Code,Chrome DevTools</p>
+    </div>
+     </div>
     </section>
 
     <section id="projects" class="section">
@@ -413,6 +437,23 @@
             color: #fff;
         }
 
+/* Pop-up effect for skill-tags */
+.skill-tag:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,.15);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+/* Pop-up effect for download buttons */
+.resume-button:hover,
+.cv-button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,.15);
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+
+
         .download-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -475,6 +516,51 @@
             padding: 8px 12px;
             border-radius: 20px;
         }
+
+/* --- Skill cards (same visual as project cards) --- */
+.skills-filter-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.skills-filter-buttons button {
+    background: #333;
+    color: #fff;
+    border: none;
+    margin: 5px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.skills-filter-buttons button.active,
+.skills-filter-buttons button:hover {
+    background: #1da1f2;
+}
+
+.skills-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.skill-card {
+    background: #fff;
+    border-left: 5px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+
 
         /* Projects Section */
         #projects h2 {
@@ -1004,4 +1090,23 @@
                 });
             });
         });
+
+
+// --- Skill filtering (identical logic to projects) ---
+document.querySelectorAll('.skills-filter-buttons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.skills-filter-buttons button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.getAttribute('data-filter');
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.style.display = (category === 'all' || card.classList.contains(category)) ? 'block' : 'none';
+        });
+    });
+});
+
+
+
+
         </script>
+        
