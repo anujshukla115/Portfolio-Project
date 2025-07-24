@@ -131,12 +131,21 @@
     <section id="achievements" class="section alternate">
         <div class="container">
             <h2>Achievements & Certifications</h2>
+
+            <!-- Filter buttons -->
+            <div class="filter-buttons">
+                <button data-filter="all" class="active">All</button>
+                <button data-filter="HACKERRANK">HACKERRANK</button>
+                <button data-filter="GEEKS FOR GEEKS">GEEKS FOR GEEKS</button>
+                <button data-filter="LEETCODE">LEETCODE</button>
+            </div>
+
             <div class="timeline">
-                <div class="timeline-item">
-                    <img src="python.png" alt="Python Fundamentals" class="timeline-img">
+                <div class="timeline-item HACKERRANK">
+                    <img src="Hackerrank-CSS.png" alt="CSS BASIC" class="timeline-img">
                     <div class="timeline-content">
-                        <h3>Programming Fundamentals using Python - Part 1</h3>
-                        <p>Infosys Springboard — 2024</p>
+                        <h3>CSS BASIC</h3>
+                        <p>HACKERRANK — 2025</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -157,6 +166,7 @@
         </div>
     </section>
 
+    
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
@@ -1024,92 +1034,59 @@
         }
     </style>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Mobile navigation toggle
-            const hamburger = document.getElementById("hamburger");
-            const navLinks = document.getElementById("nav-links");
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
 
-            hamburger.addEventListener("click", () => {
-                navLinks.classList.toggle("show");
-            });
+  /* ----- 1. Mobile Nav (unchanged) ----- */
+  const hamburger = document.getElementById('hamburger');
+  const navLinks   = document.getElementById('nav-links');
 
-            // Close menu on link click
-            document.querySelectorAll(".nav-links a").forEach(link => {
-                link.addEventListener("click", () => {
-                    navLinks.classList.remove("show");
-                });
-            });
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
+  document.querySelectorAll('.nav-links a').forEach(link =>
+    link.addEventListener('click', () => navLinks.classList.remove('show'))
+  );
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target))
+      navLinks.classList.remove('show');
+  });
 
-            // Close menu when clicking outside
-            document.addEventListener("click", (e) => {
-                if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                    navLinks.classList.remove("show");
-                }
-            });
+  /* ----- 2. Type-writer effect (unchanged) ----- */
+  const typingText = document.querySelector('.typing-text');
+  const texts = ['Frontend Developer', 'Problem Solver', 'Coder'];
+  let i = 0, j = 0, isDeleting = false;
+  function type() {
+    typingText.textContent = texts[i].substring(0, j);
+    if (!isDeleting) {
+      if (++j > texts[i].length) { isDeleting = true; setTimeout(type, 1000); return; }
+    } else {
+      if (--j === 0) { isDeleting = false; i = (i + 1) % texts.length; }
+    }
+    setTimeout(type, isDeleting ? 50 : 100);
+  }
+  type();
 
-            // Typing animation
-            const typingText = document.querySelector(".typing-text");
-            const texts = ["Frontend Developer", "Problem Solver", "Coder"];
-            let i = 0, j = 0, isDeleting = false;
+  /* ----- 3. Generic reusable filter helper ----- */
+  function setupFilter(buttonSelector, cardSelector) {
+    const buttons = document.querySelectorAll(buttonSelector);
+    const cards   = document.querySelectorAll(cardSelector);
 
-            function type() {
-                typingText.textContent = texts[i].substring(0, j);
-                if (!isDeleting) {
-                    j++;
-                    if (j === texts[i].length + 1) {
-                        isDeleting = true;
-                        setTimeout(type, 1000);
-                        return;
-                    }
-                } else {
-                    j--;
-                    if (j === 0) {
-                        isDeleting = false;
-                        i = (i + 1) % texts.length;
-                    }
-                }
-                setTimeout(type, isDeleting ? 50 : 100);
-            }
-            type();
-
-                      // Project filtering
-            const filterButtons = document.querySelectorAll('.filter-buttons button');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    const category = btn.getAttribute('data-filter');
-
-                    projectCards.forEach(card => {
-                        if (category === 'all' || card.classList.contains(category)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        });
-
-
-// --- Skill filtering (identical logic to projects) ---
-document.querySelectorAll('.skills-filter-buttons button').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.skills-filter-buttons button').forEach(b => b.classList.remove('active'));
+    buttons.forEach(btn =>
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        const category = btn.getAttribute('data-filter');
-        document.querySelectorAll('.skill-card').forEach(card => {
-            card.style.display = (category === 'all' || card.classList.contains(category)) ? 'block' : 'none';
-        });
-    });
+        const category = btn.dataset.filter;
+        cards.forEach(card =>
+          card.style.display = (category === 'all' || card.classList.contains(category))
+            ? 'block'
+            : 'none'
+        );
+      })
+    );
+  }
+
+  /* ----- 4. Attach filters ----- */
+  setupFilter('#projects .filter-buttons button', '.project-card');
+  setupFilter('#achievements .filter-buttons button', '.timeline-item');
 });
-
-
-
-
-        </script>
-        
+</script>
