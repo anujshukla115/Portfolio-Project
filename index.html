@@ -4,21 +4,386 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANUJ SHUKLA - Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box
+        }
+        body
+        {
+            font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+            line-height:1.6;
+            color:#333;
+            background:linear-gradient(135deg,#2c3e50 0%,#34495e 100%);
+            min-height:100vh
+        }
+        .container
+        {
+            max-width:1200px;
+            margin:0 auto;
+            
+        padding:0 20px
+    }
+        nav
+        {
+            position:fixed;
+            top:0;
+            width:100%;
+            background:rgba(255,255,255,.95);
+            backdrop-filter:blur(10px);
+            z-index:1000;
+            transition:.3s
+        }
+        nav.scrolled
+        {
+            box-shadow:0 2px 20px rgba(0,0,0,.1)
+        }
+        nav .container
+        {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:1rem 20px
+        }
+        .logo
+        {
+            font-size:1.5rem;
+            font-weight:700;
+            color:#333;
+            text-decoration:none
+        }
+        .nav-links
+        {
+            display:flex;
+            list-style:none;
+            gap:2rem
+        }
+        .nav-links 
+        a
+        {
+            color:#333;
+            text-decoration:none;
+            font-weight:500;
+            position:relative
+        }
+        .nav-links 
+        a:hover
+        {
+            color:#3498db
+        }
+        .nav-links 
+        a::after
+        {
+            content:'';
+            position:absolute;
+            bottom:-5px;
+            left:0;
+            width:0;
+            height:2px;
+            background:#3498db;
+            transition:.3s
+        }
+        .nav-links 
+        a:hover::after
+        {
+            width:100%
+        }
+        .hero
+        {
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            color:white;
+            position:relative
+        }
+        .hero-content
+        {
+            z-index:2;
+            max-width:800px;
+            animation:fadeInUp 1s
+        }
+        .hero h1
+        {
+            font-size:4rem;
+            font-weight:700;
+            margin-bottom:1rem;
+            text-shadow:2px 2px 4px rgba(0,0,0,.3)
+        }
+        .hero p
+        {
+            font-size:1.5rem;
+            margin-bottom:2rem;
+            opacity:.9
+        }
+        .cta-button
+        {
+            display:inline-block;
+            padding:15px 40px;
+            background:rgba(255,255,255,.2);
+            color:white;
+            text-decoration:none;
+            border-radius:50px;
+            border:2px solid rgba(255,255,255,.3);
+            font-weight:600;
+            transition:.3s;
+            backdrop-filter:blur(10px)
+        }
+    .cta-button:hover
+    {background:rgba(255,255,255,.3);
+        transform:translateY(-2px);
+        box-shadow:0 10px 30px rgba(0,0,0,.2)
+    }
+        .section
+        {
+            padding:100px 0;
+            background:white
+        }
+        .section.alternate
+        {
+            background:#f8f9fa
+        }
+        .section-title
+        {
+            text-align:center;
+            font-size:3rem;
+            font-weight:700;
+            margin-bottom:3rem;
+            color:#333;
+            position:relative
+        }
+        .section-title::after
+        {
+            content:'';
+            position:absolute;
+            bottom:-10px;
+            left:50%;
+            transform:translateX(-50%);
+            width:80px;
+            height:4px;
+            background:linear-gradient(90deg,#3498db,#2c3e50);
+            border-radius:2px
+        }
+        .about-content
+        {
+            display:grid;
+            grid-template-columns:1fr 2fr;
+            gap:4rem;
+            align-items:center;
+            margin-top:2rem
+        }
+        .profile-pic
+        {
+            width:300px;
+            height:300px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#3498db,#2c3e50);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-size:4rem;
+            font-weight:700;
+            margin:0 auto;
+            box-shadow:0 20px 40px rgba(0,0,0,.1)
+        }
+        .about-text
+        {
+            font-size:1.1rem;
+            line-height:1.8;
+            color:#666
+        }
+        .skills
+        {
+            display:flex;
+            flex-wrap:wrap;
+            gap:1rem;
+            margin-top:2rem;
+            justify-content:center
+        }
+        .skill-tag
+        {
+            padding:8px 16px;
+            background:linear-gradient(135deg,#3498db,#2c3e50);
+            color:white;
+            border-radius:25px;
+            font-size:.9rem;
+            font-weight:500
+        }
+        .portfolio-grid
+        {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+            gap:2rem;
+            margin-top:2rem
+        }
+        .loading
+        {
+            text-align:center;
+            padding:2rem;
+            color:#666
+        }
+        .portfolio-item
+        {
+            background:white;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 10px 30px rgba(0,0,0,.1);
+            transition:.3s;
+            cursor:pointer
+        }
+        .portfolio-item:hover
+        {
+            transform:translateY(-10px);
+            box-shadow:0 20px 50px rgba(0,0,0,.15)
+        }
+        .portfolio-image
+        {
+            height:200px;
+            background:linear-gradient(135deg,#3498db,#2c3e50);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            font-size:1.5rem;
+            font-weight:600;
+            padding:1rem
+        }
+        .portfolio-content
+        {
+            padding:1.5rem
+        }
+        .portfolio-title
+        {
+            font-size:1.3rem;
+            font-weight:600;
+            margin-bottom:.5rem;
+            color:#333
+        }
+        .portfolio-description
+        {
+            color:#666;
+            margin-bottom:1rem
+        }
+        .repo-stats
+        {
+            display:flex;
+            justify-content:space-between;
+            margin-top:1rem;
+            font-size:.9rem;
+            color:#888
+        }
+        .stat-item
+        {
+            display:flex;
+            align-items:center;
+            gap:.3rem
+        }
+        .repo-link
+        {
+            display:inline-block;
+            margin-top:1rem;
+            padding:8px 16px;
+            background:linear-gradient(135deg,#3498db,#2c3e50);
+            color:white;
+            text-decoration:none;
+            border-radius:20px;
+            font-size:.9rem;
+            transition:.3s
+        }
+        .repo-link:hover
+        {
+            transform:scale(1.05)
+        }
+        .contact
+        {
+            background:#f8f9fa
+        }
+        .contact-content
+        {
+            text-align:center;
+            max-width:600px;
+            margin:0 auto
+        }
+        .contact-info
+        {
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+            gap:2rem;
+            margin:3rem 0
+        }
+        .contact-item
+        {
+            padding:2rem;
+            background:white;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,.08);
+            transition:.3s
+        }
+        .contact-item:hover
+        {
+            transform:translateY(-5px)
+        }
+        .contact-icon
+        {
+            width:60px;
+            height:60px;
+            background:linear-gradient(135deg,#3498db,#2c3e50);
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto 1rem;
+            color:white;
+            font-size:1.5rem
+        }
+        .contact-link
+        {
+            color:#3498db;
+            text-decoration:none;
+            word-break:break-word;
+            transition:.3s
+        }
+        .contact-link:hover
+        {
+            color:#2c3e50;
+            text-decoration:underline
+        }
+        footer
+        {
+            background:#333;
+            color:white;
+            text-align:center
+            ;padding:2rem 0
+        }
+        @keyframes fadeInUp
+        {
+            from{opacity:0;transform:translateY(30px)}
+            to
+            {opacity:1;transform:translateY(0)}
+        }
+        @media(max-width:768px)
+        {
+            .hero h1{font-size:2.5rem}
+            .hero p{font-size:1.2rem}
+            .about-content{grid-template-columns:1fr;text-align:center}
+            .nav-links{display:none}
+            .section-title{font-size:2rem}
+            .portfolio-grid{grid-template-columns:1fr}
+        }
+        html{scroll-behavior:smooth}
+    </style>
 </head>
 <body>
     <nav id="navbar">
         <div class="container">
             <a href="#home" class="logo">ANUJ SHUKLA</a>
-            <div class="hamburger" id="hamburger">
-                &#9776;
-            </div>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#achievements">Achievements & Certifications</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -27,12 +392,11 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>ANUJ SHUKLA</h1>
-            <p id="typewriter" class="subtitle"></p>
-            <p class="typing-text"></p>
-            <div class="cta-buttons">
-                <a href="#projects" class="cta-button">View My Work</a>
-                <a href="#contact" class="cta-button">Get in touch</a>
-            </div>
+            <p>Frontend Developer & Coder</p>
+            <a href="#portfolio" class="cta-button">View My Work</a>
+            <br>
+            <br>
+            <a href="#contact" class="cta-button">Get in touch</a>
         </div>
     </section>
 
@@ -41,222 +405,16 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <div class="profile-pic">
-                    <img src="Profile-Picture.jpg" alt="Anuj Shukla" class="profile-image">
-                    </div>
+                    <div class="profile-pic">AS</div>
                 </div>
                 <div class="about-text">
-                    <p>I'm a second-year BCA student at PSIT College with a passion for programming. Proficient in C++, Java, Python, HTML & CSS.</p>
+                    <p>A second-year BCA student at PSIT College with a passion for programming. Proficient in C++, Java, Python, HTML & CSS.</p>
                     <p>Currently focused on mastering Data Structures & Algorithms while expanding into full-stack development. Aspiring to build a career in full-stack development with plans to contribute to innovative tech solutions.</p>
                     <div class="skills">
                         <span class="skill-tag">Problem Solving</span>
-                        <span class="skill-tag">Leadership</span>
-                        <span class="skill-tag">Supportive</span>
-                        <span class="skill-tag">Listening</span>
+                        <span class="skill-tag">Creative Design</span>
+                        <span class="skill-tag">Project Management</span>
                         <span class="skill-tag">Team Collaboration</span>
-                    </div>
-                    <div class="download-buttons">
-                        <a href="" download class="cv-button">📄 Download CV</a>
-                        <a href="" download class="resume-button">📄 Download Resume</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section alternate">
-        <div class="container">
-            <h2>Skills</h2>
-            
-<div class="skills-gallery">
-    <div class="skill-card frontend">
-        <h3>Frontend:</h3>
-        <p>HTML,CSS,Bootstrap,JavaScript</p>
-    </div>
-
-    <div class="skill-card frontend">
-        <h3>Programming:</h3>
-        <p>C,Python,C++</p>
-    </div>
-
-    <div class="skill-card frontend">
-        <h3>DSA:</h3>
-        <p>(C++ Problem Solving)</p>
-    </div>
-
-    <div class="skill-card frontend">
-        <h3>Version Control:</h3>
-        <p>Git,GitHub</p>
-    </div>
-
-    <div class="skill-card programming">
-        <h3>Deployment:</h3>
-        <p>Netlify,Vercel</p>
-    </div>
-
-    <div class="skill-card programming">
-        <h3>Tools:</h3>
-        <p>VS Code,Chrome DevTools</p>
-    </div>
-     </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <span class="offset-anchor" id="projects"></span>
-            <h2>Projects</h2>
-            <div class="filter-buttons">
-                <button data-filter="all" class="active">All</button>
-                <button data-filter="frontend">Frontend</button>
-                <button data-filter="python">Python</button>
-                <button data-filter="cpp">C++</button>
-            </div>
-
-            <div class="projects-gallery">
-                <div class="project-card frontend">
-                    <h3>Page-Landing-Project</h3>
-                    <p>A static, responsive landing website for a product like a smartwatch, headphones, or mobile</p>
-                </div>
-                <div class="project-card frontend">
-                    <h3>My Portfolio</h3>
-                    <p>This modern portfolio with animations</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Achievements Section with Folder System -->
-    <section id="achievements" class="section alternate">
-        <div class="container">
-            <h2>Achievements & Certifications</h2>
-            
-            <div class="certificates-container">
-                <!-- HackerRank Folder -->
-                <div class="certificate-folder">
-                    <div class="folder-header" data-folder="hackerrank">
-                        <div class="folder-icon">
-                            <img src=https://cdn-1.webcatalog.io/catalog/hackerrank/hackerrank-icon.png height="50",width="50">
-                        </div>
-                        <h3>HackerRank</h3>
-                        <div class="folder-toggle">▼</div>
-                    </div>
-                    <div class="folder-content" id="hackerrank-content">
-                        <div class="certificate-item">
-                            <img src="Hackerrank-CSS.png" alt="CSS BASIC" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>CSS (Basic)</h4>
-                                <p>HackerRank — 2025</p>
-                                <span class="certificate-type">Frontend</span>
-                            </div>
-                        </div>
-                        <div class="certificate-item">
-                            <img src="Hackerrank-PYTHON.png" alt="Python" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Python (Basic)</h4>
-                                <p>HackerRank — 2025</p>
-                                <span class="certificate-type">Programming</span>
-                            </div>
-                        </div>
-                        <!-- Add more HackerRank certificates here -->
-                         <div class="certificate-item">
-                            <img src="Hackerrank-Problem Solving.png" alt="Problem Solving (Basic)" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Problem Solving (Basic)</h4>
-                                <p>HackerRank — 2025</p>
-                                <span class="certificate-type">DSA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LeetCode Folder -->
-                <div class="certificate-folder">
-                    <div class="folder-header" data-folder="leetcode">
-                        <div class="folder-icon">
-                            <img src=https://th.bing.com/th/id/OIP.SPL888qLtYK-N-lmRHoDYgHaHa?w=160&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3 height="50",width="50">
-                        </div>
-                        <h3>LeetCode</h3>
-                        <div class="folder-toggle">▼</div>
-                    </div>
-                    <div class="folder-content" id="leetcode-content">
-                        <div class="certificate-item">
-                            <img src="leetcode-badge.png" alt="LeetCode Badge" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Problem Solving Badge</h4>
-                                <p>LeetCode — 2024</p>
-                                <span class="certificate-type">DSA</span>
-                            </div>
-                        </div>
-                        <!-- Add more LeetCode certificates here -->
-                    </div>
-                </div>
-
-                <!-- GeeksforGeeks Folder -->
-                <div class="certificate-folder">
-                    <div class="folder-header" data-folder="gfg">
-                        <div class="folder-icon">
-                            <img src=https://www.levelupcollege.com/wp-content/uploads/2022/07/gfg-logo.png height="30",width="30">
-                        </div>
-                        <h3>GeeksforGeeks</h3>
-                        <div class="folder-toggle">▼</div>
-                    </div>
-                    <div class="folder-content" id="gfg-content">
-                        <div class="certificate-item">
-                            <img src="gfg-certificate.png" alt="GFG Certificate" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Data Structures Course</h4>
-                                <p>GeeksforGeeks — 2024</p>
-                                <span class="certificate-type">DSA</span>
-                            </div>
-                        </div>
-                        <!-- Add more GFG certificates here -->
-                    </div>
-                </div>
-
-                <!-- NPTEL/Academic Folder -->
-                <div class="certificate-folder">
-                    <div class="folder-header" data-folder="nptel">
-                        <div class="folder-icon">
-                            <img src=https://tse4.mm.bing.net/th/id/OIP.a-JZhBUXbkricros6J__6QHaHa?w=768&h=768&rs=1&pid=ImgDetMain&o=7&rm=3 height="50",width="50">
-                        </div>
-                        <h3>NPTEL & Academic</h3>
-                        <div class="folder-toggle">▼</div>
-                    </div>
-                    <div class="folder-content" id="nptel-content">
-                        <div class="certificate-item">
-                            <img src="nptl.png" alt="NPTEL Certificate" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Problem Solving through Programming in C (Elite)</h4>
-                                <p>NPTEL (MoE, Govt. of India), Prof. Haimanti Banerji — 2023</p>
-                                <span class="certificate-type">Programming</span>
-                            </div>
-                        </div>
-                        <!-- Add more NPTEL/Academic certificates here -->
-                    </div>
-                </div>
-
-                <!-- Other Platforms Folder -->
-                <div class="certificate-folder">
-                    <div class="folder-header" data-folder="others">
-                        <div class="folder-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                                <rect width="24" height="24" rx="4" fill="#9C27B0"/>
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="white"/>
-                            </svg>
-                        </div>
-                        <h3>Other Platforms</h3>
-                        <div class="folder-toggle">▼</div>
-                    </div>
-                    <div class="folder-content" id="others-content">
-                        <div class="certificate-item">
-                            <img src="coursera-certificate.png" alt="Coursera Certificate" class="certificate-img">
-                            <div class="certificate-info">
-                                <h4>Web Development Fundamentals</h4>
-                                <p>Coursera — 2024</p>
-                                <span class="certificate-type">Frontend</span>
-                            </div>
-                        </div>
-                        <!-- Add more certificates from other platforms here -->
                     </div>
                 </div>
             </div>
@@ -264,11 +422,12 @@
     </section>
 
     
+
     <section id="contact" class="section contact">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
             <div class="contact-content">
-                <p>Ready to collaborate? Let's discuss your next project.</p>
+                <p>Ready to collaborate? Let’s discuss your next project.</p>
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
@@ -295,1030 +454,14 @@
         </div>
     </section>
 
-
-<!-- Lightbox markup -->
-<div id="lightbox" style="
-  position:fixed; inset:0; background:rgba(0,0,0,.8);
-  display:none; align-items:center; justify-content:center;
-  z-index:9999; cursor:pointer;
-">
-  <img id="lightbox-img" style="
-    max-width:90vw; max-height:90vh;
-    border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,.5);
-  ">
-</div>
-
-
     <footer>
         <div class="container">
             <p>&copy; 2025 ANUJ SHUKLA. All rights reserved.</p>
         </div>
     </footer>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: white;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, .95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: .3s;
-        }
-
-        nav.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, .1);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3498db;
-            transition: .3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #333;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            position: relative;
-            padding: 80px 20px 20px;
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 600px;
-            animation: fadeInUp 1s;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, .3);
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: .9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, .2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, .3);
-            font-weight: 600;
-            transition: .3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-button:hover {
-            background: rgba(255, 255, 255, .3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .section.alternate {
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .profile-pic {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            font-weight: 700;
-            margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, .1);
-            overflow: hidden;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-pic:hover .profile-image {
-            transform: scale(1.05);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .skill-tag {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: #000;
-            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
-            border-radius: 25px;
-            font-size: .9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: #fff;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,.15);
-        }
-
-        .download-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-            justify-content: center;
-        }
-
-        .resume-button, .cv-button {
-            display: inline-block;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: #000;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .resume-button:hover, .cv-button:hover {
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,.15);
-        }
-
-        /* Skills Section */
-        #skills h2 {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        #skills h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        .skills-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-card {
-            background: #fff;
-            border-left: 5px solid #333;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Projects Section */
-        #projects h2 {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        #projects h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        .filter-buttons {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .filter-buttons button {
-            background: #333;
-            color: #fff;
-            border: none;
-            margin: 5px;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .filter-buttons button.active,
-        .filter-buttons button:hover {
-            background: #1da1f2;
-        }
-
-        .projects-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background: #fff;
-            border-left: 5px solid #333;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* New Certificate Folders Styling */
-        #achievements h2 {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        #achievements h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2c3e50);
-            border-radius: 2px;
-        }
-
-        .certificates-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .certificate-folder {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .certificate-folder:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .folder-header {
-            display: flex;
-            align-items: center;
-            padding: 20px 25px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            cursor: pointer;
-            border-bottom: 1px solid #dee2e6;
-            transition: all 0.3s ease;
-        }
-
-        .folder-header:hover {
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-        }
-
-        .folder-icon {
-            font-size: 1.8rem;
-            margin-right: 15px;
-            transition: transform 0.3s ease;
-        }
-
-        .folder-header h3 {
-            flex: 1;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin: 0;
-        }
-
-        .folder-toggle {
-            font-size: 1.2rem;
-            color: #6c757d;
-            transition: transform 0.3s ease;
-        }
-
-        .folder-header.active .folder-toggle {
-            transform: rotate(180deg);
-        }
-
-        .folder-header.active .folder-icon {
-            transform: scale(1.1);
-        }
-
-        .folder-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .folder-content.active {
-            max-height: 1000px;
-            padding: 20px 25px;
-        }
-
-        .certificate-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #f1f3f4;
-            transition: all 0.3s ease;
-        }
-
-        .certificate-item:last-child {
-            border-bottom: none;
-        }
-
-        .certificate-item:hover {
-            background: #f8f9fa;
-            padding: 15px 10px;
-            border-radius: 8px;
-            transform: translateX(5px);
-        }
-
-        .certificate-img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 8px;
-            margin-right: 20px;
-            border: 2px solid #e9ecef;
-            background: white;
-            padding: 5px;
-            transition: transform 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .certificate-item:hover .certificate-img {
-            transform: scale(1.05);
-            border-color: #3498db;
-        }
-
-        .certificate-info {
-            flex: 1;
-        }
-
-        .certificate-info h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 5px;
-        }
-
-        .certificate-info p {
-            color: #6c757d;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-
-        .certificate-type {
-            display: inline-block;
-            padding: 4px 12px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            color: white;
-            border-radius: 15px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: #f8f9fa;
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .contact-item {
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
-            transition: .3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3498db, #2c3e50);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .contact-link {
-            color: #3498db;
-            text-decoration: none;
-            word-break: break-word;
-            transition: .3s;
-        }
-
-        .contact-link:hover {
-            color: #2c3e50;
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Utilities */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .offset-anchor {
-            display: block;
-            height: 80px;
-            margin-top: -80px;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 768px) {
-            /* Navigation */
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                background: #fff;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                padding: 20px;
-                border-radius: 0 0 8px 8px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-                z-index: 999;
-            }
-
-            .nav-links.show {
-                display: flex;
-            }
-
-            .nav-links a {
-                color: #333;
-                font-size: 1.1rem;
-                font-weight: 600;
-                padding: 10px 0;
-                border-bottom: 1px solid #eee;
-            }
-
-            .nav-links li:last-child a {
-                border-bottom: none;
-            }
-
-            /* Hero Section */
-            .hero {
-                min-height: 100vh;
-                padding: 100px 20px 40px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .cta-button {
-                width: 80%;
-                max-width: 280px;
-                text-align: center;
-                padding: 12px 20px;
-            }
-
-            /* Sections */
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-                margin-bottom: 2rem;
-            }
-
-            /* About Section */
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .profile-pic {
-                width: 220px;
-                height: 220px;
-                margin: 0 auto 2rem;
-            }
-
-            .about-text {
-                font-size: 1rem;
-                text-align: left;
-            }
-
-            .skills {
-                justify-content: center;
-                margin: 1.5rem 0;
-            }
-
-            .skill-tag {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-            }
-
-            .download-buttons {
-                justify-content: center;
-            }
-
-            /* Skills Section */
-            #skills h2 {
-                font-size: 2.2rem;
-            }
-
-            .skills-gallery {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            /* Projects Section */
-            #projects h2 {
-                font-size: 2.2rem;
-            }
-
-            .filter-buttons {
-                margin-bottom: 20px;
-            }
-
-            .filter-buttons button {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-                margin: 3px;
-            }
-
-            .projects-gallery {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .project-card {
-                padding: 15px;
-            }
-
-            .project-card h3 {
-                font-size: 1.2rem;
-                margin-bottom: 10px;
-            }
-
-            /* Certificate Folders Mobile */
-            #achievements h2 {
-                font-size: 2.2rem;
-            }
-
-            .folder-header {
-                padding: 15px 20px;
-            }
-
-            .folder-header h3 {
-                font-size: 1.2rem;
-            }
-
-            .folder-icon {
-                font-size: 1.5rem;
-                margin-right: 10px;
-            }
-
-            .certificate-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px 0;
-            }
-
-            .certificate-img {
-                width: 70px;
-                height: 70px;
-                margin: 0 0 10px 0;
-            }
-
-            .certificate-info h4 {
-                font-size: 1rem;
-            }
-
-            .certificate-info p {
-                font-size: 0.85rem;
-            }
-
-            /* Contact Section */
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                margin: 2rem 0;
-            }
-
-            .contact-item {
-                padding: 1.5rem;
-            }
-
-            .contact-item h3 {
-                font-size: 1.1rem;
-            }
-
-            .contact-item p {
-                font-size: 0.9rem;
-            }
-
-            /* Footer */
-            footer {
-                padding: 1.5rem 0;
-            }
-
-            footer p {
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Extra small devices */
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .profile-pic {
-                width: 180px;
-                height: 180px;
-            }
-
-            .cta-button {
-                width: 90%;
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-
-            .contact-item {
-                padding: 1rem;
-            }
-
-            .certificate-img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .folder-header {
-                padding: 12px 15px;
-            }
-        }
-
-/* subtle zoom cursor on certificate thumbnails */
-.certificate-img { cursor: zoom-in; }
-
-
-    </style>
-
-   <script>
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* ----- 1. Mobile Nav (unchanged) ----- */
-  const hamburger = document.getElementById('hamburger');
-  const navLinks   = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
-  document.querySelectorAll('.nav-links a').forEach(link =>
-    link.addEventListener('click', () => navLinks.classList.remove('show'))
-  );
-  document.addEventListener('click', e => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target))
-      navLinks.classList.remove('show');
-  });
-
-  /* ----- 2. Type-writer effect (unchanged) ----- */
-  const typingText = document.querySelector('.typing-text');
-  const texts = ['Frontend Developer', 'Problem Solver', 'Coder'];
-  let i = 0, j = 0, isDeleting = false;
-  function type() {
-    typingText.textContent = texts[i].substring(0, j);
-    if (!isDeleting) {
-      if (++j > texts[i].length) { isDeleting = true; setTimeout(type, 1000); return; }
-    } else {
-      if (--j === 0) { isDeleting = false; i = (i + 1) % texts.length; }
-    }
-    setTimeout(type, isDeleting ? 50 : 100);
-  }
-  type();
-
-  /* ----- 3. Generic reusable filter helper ----- */
-  function setupFilter(buttonSelector, cardSelector) {
-    const buttons = document.querySelectorAll(buttonSelector);
-    const cards   = document.querySelectorAll(cardSelector);
-
-    buttons.forEach(btn =>
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.dataset.filter;
-        cards.forEach(card =>
-          card.style.display = (category === 'all' || card.classList.contains(category))
-            ? 'block'
-            : 'none'
-        );
-      })
-    );
-  }
-
-  /* ----- 4. Attach filters ----- */
-  setupFilter('#projects .filter-buttons button', '.project-card');
-
-  /* ----- 5. Certificate Folder Toggle ----- */
-  const folderHeaders = document.querySelectorAll('.folder-header');
-  
-  folderHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const folder = header.getAttribute('data-folder');
-      const content = document.getElementById(folder + '-content');
-      const isActive = header.classList.contains('active');
-      
-      // Close all other folders
-      folderHeaders.forEach(h => {
-        if (h !== header) {
-          h.classList.remove('active');
-          const otherFolder = h.getAttribute('data-folder');
-          const otherContent = document.getElementById(otherFolder + '-content');
-          otherContent.classList.remove('active');
-        }
-      });
-      
-      // Toggle current folder
-      if (isActive) {
-        header.classList.remove('active');
-        content.classList.remove('active');
-      } else {
-        header.classList.add('active');
-        content.classList.add('active');
-      }
-    });
-  });
-
-  /* ----- 6. Smooth scrolling for navbar ----- */
-  window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-});
-
-
-/* Lightbox for certificate images */
-const lightbox      = document.getElementById('lightbox');
-const lightboxImg   = document.getElementById('lightbox-img');
-const certImages    = document.querySelectorAll('.certificate-img');
-
-// open
-certImages.forEach(img =>
-  img.addEventListener('click', () => {
-    lightboxImg.src = img.src;
-    lightbox.style.display = 'flex';
-  })
-);
-
-// close
-lightbox.addEventListener('click', () => lightbox.style.display = 'none');
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') lightbox.style.display = 'none';
-});
-
-
-</script>
+    <script>
+        
+    </script>
+</body>
+</html>
