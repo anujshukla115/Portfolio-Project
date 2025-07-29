@@ -68,7 +68,6 @@
         <div class="container">
             <h2>Skills</h2>
             
-<!-- Skill cards -->
 <div class="skills-gallery">
     <div class="skill-card frontend">
         <h3>Frontend:</h3>
@@ -106,7 +105,6 @@
         <div class="container">
             <span class="offset-anchor" id="projects"></span>
             <h2>Projects</h2>
-            <!-- Filter buttons -->
             <div class="filter-buttons">
                 <button data-filter="all" class="active">All</button>
                 <button data-filter="frontend">Frontend</button>
@@ -114,7 +112,6 @@
                 <button data-filter="cpp">C++</button>
             </div>
 
-            <!-- Project cards -->
             <div class="projects-gallery">
                 <div class="project-card frontend">
                     <h3>Page-Landing-Project</h3>
@@ -127,39 +124,139 @@
             </div>
         </div>
     </section>
-                  <!-- Achievements -->
+
+    <!-- New Achievements Section with Folder System -->
     <section id="achievements" class="section alternate">
         <div class="container">
             <h2>Achievements & Certifications</h2>
-
-            <!-- Filter buttons -->
-            <div class="filter-buttons">
-                <button data-filter="all" class="active">All</button>
-                <button data-filter="HACKERRANK">HACKERRANK</button>
-                <button data-filter="GEEKS FOR GEEKS">GEEKS FOR GEEKS</button>
-                <button data-filter="LEETCODE">LEETCODE</button>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item HACKERRANK">
-                    <img src="Hackerrank-CSS.png" alt="CSS BASIC" class="timeline-img">
-                    <div class="timeline-content">
-                        <h3>CSS BASIC</h3>
-                        <p>HACKERRANK — 2025</p>
+            
+            <div class="certificates-container">
+                <!-- HackerRank Folder -->
+                <div class="certificate-folder">
+                    <div class="folder-header" data-folder="hackerrank">
+                        <div class="folder-icon">
+                            <img src=https://cdn-1.webcatalog.io/catalog/hackerrank/hackerrank-icon.png height="50",width="50">
+                        </div>
+                        <h3>HackerRank</h3>
+                        <div class="folder-toggle">▼</div>
+                    </div>
+                    <div class="folder-content" id="hackerrank-content">
+                        <div class="certificate-item">
+                            <img src="Hackerrank-CSS.png" alt="CSS BASIC" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>CSS (Basic)</h4>
+                                <p>HackerRank — 2025</p>
+                                <span class="certificate-type">Frontend</span>
+                            </div>
+                        </div>
+                        <div class="certificate-item">
+                            <img src="Hackerrank-PYTHON.png" alt="Python" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Python (Basic)</h4>
+                                <p>HackerRank — 2025</p>
+                                <span class="certificate-type">Programming</span>
+                            </div>
+                        </div>
+                        <!-- Add more HackerRank certificates here -->
+                         <div class="certificate-item">
+                            <img src="Hackerrank-Problem Solving.png" alt="Problem Solving (Basic)" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Problem Solving (Basic)</h4>
+                                <p>HackerRank — 2025</p>
+                                <span class="certificate-type">DSA</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <img src="nptl.png" alt="Problem Solving in C" class="timeline-img">
-                    <div class="timeline-content">
-                        <h3>Problem Solving through Programming in C (Elite)</h3>
-                        <p>NPTEL (MoE, Govt. of India), Prof. Haimanti Banerji — 2023</p>
+
+                <!-- LeetCode Folder -->
+                <div class="certificate-folder">
+                    <div class="folder-header" data-folder="leetcode">
+                        <div class="folder-icon">
+                            <img src=https://th.bing.com/th/id/OIP.SPL888qLtYK-N-lmRHoDYgHaHa?w=160&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3 height="50",width="50">
+                        </div>
+                        <h3>LeetCode</h3>
+                        <div class="folder-toggle">▼</div>
+                    </div>
+                    <div class="folder-content" id="leetcode-content">
+                        <div class="certificate-item">
+                            <img src="leetcode-badge.png" alt="LeetCode Badge" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Problem Solving Badge</h4>
+                                <p>LeetCode — 2024</p>
+                                <span class="certificate-type">DSA</span>
+                            </div>
+                        </div>
+                        <!-- Add more LeetCode certificates here -->
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <img src="hackerrank.png" alt="HackerRank Problem Solving" class="timeline-img">
-                    <div class="timeline-content">
-                        <h3>Problem Solving (Intermediate)</h3>
-                        <p>HackerRank — 2023</p>
+
+                <!-- GeeksforGeeks Folder -->
+                <div class="certificate-folder">
+                    <div class="folder-header" data-folder="gfg">
+                        <div class="folder-icon">
+                            <img src=https://www.levelupcollege.com/wp-content/uploads/2022/07/gfg-logo.png height="30",width="30">
+                        </div>
+                        <h3>GeeksforGeeks</h3>
+                        <div class="folder-toggle">▼</div>
+                    </div>
+                    <div class="folder-content" id="gfg-content">
+                        <div class="certificate-item">
+                            <img src="gfg-certificate.png" alt="GFG Certificate" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Data Structures Course</h4>
+                                <p>GeeksforGeeks — 2024</p>
+                                <span class="certificate-type">DSA</span>
+                            </div>
+                        </div>
+                        <!-- Add more GFG certificates here -->
+                    </div>
+                </div>
+
+                <!-- NPTEL/Academic Folder -->
+                <div class="certificate-folder">
+                    <div class="folder-header" data-folder="nptel">
+                        <div class="folder-icon">
+                            <img src=https://tse4.mm.bing.net/th/id/OIP.a-JZhBUXbkricros6J__6QHaHa?w=768&h=768&rs=1&pid=ImgDetMain&o=7&rm=3 height="50",width="50">
+                        </div>
+                        <h3>NPTEL & Academic</h3>
+                        <div class="folder-toggle">▼</div>
+                    </div>
+                    <div class="folder-content" id="nptel-content">
+                        <div class="certificate-item">
+                            <img src="nptl.png" alt="NPTEL Certificate" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Problem Solving through Programming in C (Elite)</h4>
+                                <p>NPTEL (MoE, Govt. of India), Prof. Haimanti Banerji — 2023</p>
+                                <span class="certificate-type">Programming</span>
+                            </div>
+                        </div>
+                        <!-- Add more NPTEL/Academic certificates here -->
+                    </div>
+                </div>
+
+                <!-- Other Platforms Folder -->
+                <div class="certificate-folder">
+                    <div class="folder-header" data-folder="others">
+                        <div class="folder-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <rect width="24" height="24" rx="4" fill="#9C27B0"/>
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="white"/>
+                            </svg>
+                        </div>
+                        <h3>Other Platforms</h3>
+                        <div class="folder-toggle">▼</div>
+                    </div>
+                    <div class="folder-content" id="others-content">
+                        <div class="certificate-item">
+                            <img src="coursera-certificate.png" alt="Coursera Certificate" class="certificate-img">
+                            <div class="certificate-info">
+                                <h4>Web Development Fundamentals</h4>
+                                <p>Coursera — 2024</p>
+                                <span class="certificate-type">Frontend</span>
+                            </div>
+                        </div>
+                        <!-- Add more certificates from other platforms here -->
                     </div>
                 </div>
             </div>
@@ -197,6 +294,20 @@
             </div>
         </div>
     </section>
+
+
+<!-- Lightbox markup -->
+<div id="lightbox" style="
+  position:fixed; inset:0; background:rgba(0,0,0,.8);
+  display:none; align-items:center; justify-content:center;
+  z-index:9999; cursor:pointer;
+">
+  <img id="lightbox-img" style="
+    max-width:90vw; max-height:90vh;
+    border-radius:8px; box-shadow:0 0 30px rgba(0,0,0,.5);
+  ">
+</div>
+
 
     <footer>
         <div class="container">
@@ -448,24 +559,9 @@
         .skill-tag:hover {
             background: linear-gradient(135deg, #3498db, #2c3e50);
             color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,.15);
         }
-
-/* Pop-up effect for skill-tags */
-.skill-tag:hover{
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,.15);
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-/* Pop-up effect for download buttons */
-.resume-button:hover,
-.cv-button:hover{
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0,0,0,.15);
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-
 
         .download-buttons {
             display: flex;
@@ -483,13 +579,15 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
         }
 
         .resume-button:hover, .cv-button:hover {
             background: linear-gradient(135deg, #3498db, #2c3e50);
             color: white;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,.15);
         }
 
         /* Skills Section */
@@ -514,66 +612,25 @@
             border-radius: 2px;
         }
 
-        .skills-list {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
+        .skills-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        .skills-list li {
-            background: #333;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
+        .skill-card {
+            background: #fff;
+            border-left: 5px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-/* --- Skill cards (same visual as project cards) --- */
-.skills-filter-buttons {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.skills-filter-buttons button {
-    background: #333;
-    color: #fff;
-    border: none;
-    margin: 5px;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.skills-filter-buttons button.active,
-.skills-filter-buttons button:hover {
-    background: #1da1f2;
-}
-
-.skills-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.skill-card {
-    background: #fff;
-    border-left: 5px solid #333;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.skill-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-
-
+        .skill-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
 
         /* Projects Section */
         #projects h2 {
@@ -638,7 +695,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Achievements Section */
+        /* New Certificate Folders Styling */
         #achievements h2 {
             text-align: center;
             font-size: 3rem;
@@ -660,42 +717,141 @@
             border-radius: 2px;
         }
 
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            background: #fff;
-            border-left: 5px solid #333;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .certificates-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .certificate-folder {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .timeline-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        .certificate-folder:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
         }
 
-        .timeline-img {
-            width: 120px;
-            height: auto;
+        .folder-header {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            cursor: pointer;
+            border-bottom: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+        }
+
+        .folder-header:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+        }
+
+        .folder-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .folder-header h3 {
+            flex: 1;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .folder-toggle {
+            font-size: 1.2rem;
+            color: #6c757d;
+            transition: transform 0.3s ease;
+        }
+
+        .folder-header.active .folder-toggle {
+            transform: rotate(180deg);
+        }
+
+        .folder-header.active .folder-icon {
+            transform: scale(1.1);
+        }
+
+        .folder-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .folder-content.active {
+            max-height: 1000px;
+            padding: 20px 25px;
+        }
+
+        .certificate-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f3f4;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-item:last-child {
+            border-bottom: none;
+        }
+
+        .certificate-item:hover {
+            background: #f8f9fa;
+            padding: 15px 10px;
+            border-radius: 8px;
+            transform: translateX(5px);
+        }
+
+        .certificate-img {
+            width: 80px;
+            height: 80px;
             object-fit: contain;
-            border-radius: 12px;
+            border-radius: 8px;
             margin-right: 20px;
-            border: 3px solid #4caf50;
-            background: #fff;
+            border: 2px solid #e9ecef;
+            background: white;
             padding: 5px;
             transition: transform 0.3s ease;
             flex-shrink: 0;
         }
 
-        .timeline-item:hover .timeline-img {
+        .certificate-item:hover .certificate-img {
             transform: scale(1.05);
+            border-color: #3498db;
         }
 
-        .timeline-content {
+        .certificate-info {
             flex: 1;
+        }
+
+        .certificate-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .certificate-info p {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .certificate-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
         /* Contact Section */
@@ -899,16 +1055,9 @@
                 font-size: 2.2rem;
             }
 
-            .skills-list {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-
-            .skills-list li {
-                text-align: center;
-                padding: 10px 15px;
-                font-size: 0.9rem;
+            .skills-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
 
             /* Projects Section */
@@ -940,30 +1089,42 @@
                 margin-bottom: 10px;
             }
 
-            /* Achievements Section */
+            /* Certificate Folders Mobile */
             #achievements h2 {
                 font-size: 2.2rem;
             }
 
-            .timeline-item {
+            .folder-header {
+                padding: 15px 20px;
+            }
+
+            .folder-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .folder-icon {
+                font-size: 1.5rem;
+                margin-right: 10px;
+            }
+
+            .certificate-item {
                 flex-direction: column;
                 text-align: center;
-                padding: 15px;
-                margin-bottom: 20px;
+                padding: 15px 0;
             }
 
-            .timeline-img {
-                width: 100px;
-                margin: 0 0 15px 0;
+            .certificate-img {
+                width: 70px;
+                height: 70px;
+                margin: 0 0 10px 0;
             }
 
-            .timeline-content h3 {
-                font-size: 1.1rem;
-                margin-bottom: 5px;
+            .certificate-info h4 {
+                font-size: 1rem;
             }
 
-            .timeline-content p {
-                font-size: 0.9rem;
+            .certificate-info p {
+                font-size: 0.85rem;
             }
 
             /* Contact Section */
@@ -1028,10 +1189,20 @@
                 padding: 1rem;
             }
 
-            .timeline-img {
-                width: 80px;
+            .certificate-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .folder-header {
+                padding: 12px 15px;
             }
         }
+
+/* subtle zoom cursor on certificate thumbnails */
+.certificate-img { cursor: zoom-in; }
+
+
     </style>
 
    <script>
@@ -1087,6 +1258,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ----- 4. Attach filters ----- */
   setupFilter('#projects .filter-buttons button', '.project-card');
-  setupFilter('#achievements .filter-buttons button', '.timeline-item');
+
+  /* ----- 5. Certificate Folder Toggle ----- */
+  const folderHeaders = document.querySelectorAll('.folder-header');
+  
+  folderHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const folder = header.getAttribute('data-folder');
+      const content = document.getElementById(folder + '-content');
+      const isActive = header.classList.contains('active');
+      
+      // Close all other folders
+      folderHeaders.forEach(h => {
+        if (h !== header) {
+          h.classList.remove('active');
+          const otherFolder = h.getAttribute('data-folder');
+          const otherContent = document.getElementById(otherFolder + '-content');
+          otherContent.classList.remove('active');
+        }
+      });
+      
+      // Toggle current folder
+      if (isActive) {
+        header.classList.remove('active');
+        content.classList.remove('active');
+      } else {
+        header.classList.add('active');
+        content.classList.add('active');
+      }
+    });
+  });
+
+  /* ----- 6. Smooth scrolling for navbar ----- */
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
 });
+
+
+/* Lightbox for certificate images */
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightbox-img');
+const certImages    = document.querySelectorAll('.certificate-img');
+
+// open
+certImages.forEach(img =>
+  img.addEventListener('click', () => {
+    lightboxImg.src = img.src;
+    lightbox.style.display = 'flex';
+  })
+);
+
+// close
+lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') lightbox.style.display = 'none';
+});
+
+
 </script>
