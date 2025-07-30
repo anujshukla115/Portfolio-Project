@@ -7,16 +7,17 @@
    
 </head>
 <body>
-   <nav id="navbar">
+  <!-- NEW NAVBAR -->
+<nav id="navbar">
   <div class="container">
     <a href="#home" class="logo">ANUJ SHUKLA</a>
 
-    <!-- Hamburger -->
+    <!-- Hamburger icon -->
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
 
-    <!-- Links -->
+    <!-- Navigation links -->
     <ul class="nav-links" id="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
@@ -24,7 +25,6 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
-</nav>
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>ANUJ SHUKLA</h1>
@@ -466,58 +466,46 @@
             .portfolio-grid{grid-template-columns:1fr}
         }
         html{scroll-behavior:smooth}
-
-/* ===== MOBILE NAV ===== */
-.hamburger{
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  gap:4px;
-}
-.hamburger span{
-  width:25px;
-  height:3px;
-  background:#333;
-  transition:.3s;
-}
-@media(max-width:768px){
-  .hamburger{display:flex}
-  .nav-links{
-    position:absolute;
-    top:100%;
-    right:20px;
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(10px);
-    flex-direction:column;
-    gap:1rem;
-    padding:1rem 2rem;
-    border-radius:8px;
-    box-shadow:0 4px 20px rgba(0,0,0,.15);
-    transform:scaleY(0);
-    transform-origin:top;
-    transition:transform .3s;
-  }
-  .nav-links.open{transform:scaleY(1)}
-}
-
-/* 1. make sure the dropdown is on top of everything */
-.nav-links{
-  z-index: 9999;          /* already inside your @media block */
-}
-
-/* 2. make the navbar itself stay above the hero */
-nav{
-  z-index: 10000;         /* add to the existing nav rule */
-}
-     
+<!-- Mobile-nav styles -->
+  <style>
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+      gap:4px;
+    }
+    .hamburger span{
+      width:25px;height:3px;background:#333;transition:.3s;
+    }
+    @media(max-width:768px){
+      .hamburger{display:flex}
+      .nav-links{
+        position:absolute;
+        top:100%;right:20px;
+        background:rgba(255,255,255,.95);
+        backdrop-filter:blur(10px);
+        flex-direction:column;
+        gap:1rem;
+        padding:1rem 2rem;
+        border-radius:8px;
+        box-shadow:0 4px 20px rgba(0,0,0,.15);
+        transform:scaleY(0);
+        transform-origin:top;
+        transition:transform .3s;
+        z-index: 9999;
+      }
+      .nav-links.open{transform:scaleY(1)}
+    }
+  </style>
+</nav>   
     </style>
-    
-</body>
-</html>
-
-<script>
+    <script>
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('nav-links');
   hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
 </script>
     
+</body>
+</html>
+
+
