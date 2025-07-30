@@ -499,7 +499,17 @@
   }
   .nav-links.open{transform:scaleY(1)}
 }
-        
+
+/* 1. make sure the dropdown is on top of everything */
+.nav-links{
+  z-index: 9999;          /* already inside your @media block */
+}
+
+/* 2. make the navbar itself stay above the hero */
+nav{
+  z-index: 10000;         /* add to the existing nav rule */
+}
+     
     </style>
     
 </body>
